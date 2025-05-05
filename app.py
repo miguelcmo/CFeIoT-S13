@@ -17,8 +17,8 @@ def get_temperature_data():
       |> filter(fn: (r) => r._measurement == "airSensor")
       |> filter(fn: (r) => r._field == "temperature")
     '''
-    client = InfluxDBClient(url=INFLUX_URL, token=INFLUX_TOKEN, org=INFLUX_ORG)
-    df = client.query_api().query_data_frame(org=INFLUX_ORG, query=query)
+    client = InfluxDBClient(url=INFLUX_URL, token=INFLUX_TOKEN, org=ORG)
+    df = client.query_api().query_data_frame(org=ORG, query=query)
     df = df[["_time", "_value"]].rename(columns={"_time": "timestamp", "_value": "temperatura"})
     df["timestamp"] = pd.to_datetime(df["timestamp"])
     return df
