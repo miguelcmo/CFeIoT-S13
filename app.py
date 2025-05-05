@@ -12,10 +12,10 @@ from config import INFLUX_URL, INFLUX_TOKEN, ORG, BUCKET
 # --- Cargar datos desde InfluxDB ---
 def get_temperature_data():
     query = '''
-    from(bucket: "TU_BUCKET")
+    from(bucket: "homeiot")
       |> range(start: -24h)
-      |> filter(fn: (r) => r._measurement == "temperatura")
-      |> filter(fn: (r) => r._field == "value")
+      |> filter(fn: (r) => r._measurement == "airSensor")
+      |> filter(fn: (r) => r._field == "temperature")
     '''
     client = InfluxDBClient(url=INFLUX_URL, token=INFLUX_TOKEN, org=INFLUX_ORG)
     df = client.query_api().query_data_frame(org=INFLUX_ORG, query=query)
