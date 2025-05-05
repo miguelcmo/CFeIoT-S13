@@ -2,3 +2,6 @@ streamlit
 influxdb-client
 pandas
 plotly
+numpy
+matplotlib
+seaborn
