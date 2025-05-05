@@ -87,7 +87,7 @@ if st.button("Cargar y analizar datos de humedad"):
 
     st.subheader("Visualización con anomalías:")
     fig, ax = plt.subplots()
-    sns.lineplot(x="timestamp", y="temperatura", data=df, label="Temperatura", ax=ax)
+    sns.lineplot(x="timestamp", y="humedad", data=df, label="Humedad", ax=ax)
     ax.scatter(outliers["timestamp"], outliers["humedad"], color="red", label="Anomalía", zorder=5)
     ax.legend()
     st.pyplot(fig)
