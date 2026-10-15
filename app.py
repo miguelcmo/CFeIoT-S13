@@ -12,7 +12,7 @@ from config import INFLUX_URL, INFLUX_TOKEN, ORG, BUCKET
 # --- Cargar datos desde InfluxDB ---
 def get_temperature_data():
     query = '''
-    from(bucket: "homeiot")
+    from(bucket: "iot_telemetry_data")
       |> range(start: -24h)
       |> filter(fn: (r) => r._field == "temperature")
     '''
@@ -25,7 +25,7 @@ def get_temperature_data():
 # --- Cargar datos desde InfluxDB ---
 def get_humidity_data():
     query = '''
-    from(bucket: "homeiot")
+    from(bucket: "iot_telemetry_data")
       |> range(start: -24h)
       |> filter(fn: (r) => r._measurement == "airSensor")
       |> filter(fn: (r) => r._field == "humidity")
