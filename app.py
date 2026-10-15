@@ -14,7 +14,6 @@ def get_temperature_data():
     query = '''
     from(bucket: "homeiot")
       |> range(start: -24h)
-      |> filter(fn: (r) => r._measurement == "airSensor")
       |> filter(fn: (r) => r._field == "temperature")
     '''
     client = InfluxDBClient(url=INFLUX_URL, token=INFLUX_TOKEN, org=ORG)
