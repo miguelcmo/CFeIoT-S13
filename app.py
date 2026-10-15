@@ -27,7 +27,6 @@ def get_humidity_data():
     query = '''
     from(bucket: "iot_telemetry_data")
       |> range(start: -24h)
-      |> filter(fn: (r) => r._measurement == "airSensor")
       |> filter(fn: (r) => r._field == "humidity")
     '''
     client = InfluxDBClient(url=INFLUX_URL, token=INFLUX_TOKEN, org=ORG)
